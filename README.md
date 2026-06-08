@@ -1,16 +1,51 @@
-# React + Vite
+# 📋 스마트 지출 통계 (Smart Expense Tracker)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 배포 링크
+- **서비스 주소:** (배포 후 주소를 입력하세요)
 
-Currently, two official plugins are available:
+## 1. 서비스 개요
+본 서비스는 사용자의 일상적인 수입과 지출 내역을 체계적으로 관리하고, 실시간으로 잔액 및 통계를 확인하여 현명한 소비 습관을 형성하도록 돕는 React 기반 웹 애플리케이션입니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **주요 목적:** 개인 자산 흐름의 직관적 파악 및 데이터 기반의 소비 관리
+* **사용자:** 용돈 및 생활비를 효율적으로 관리하고자 하는 학생 및 사회초년생
 
-## React Compiler
+## 2. 기술 스택
+* **Framework:** React (Vite)
+* **Styling:** CSS (Flexbox, Grid, Responsive Design)
+* **Storage:** `localStorage` (데이터 영구 저장)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 3. 주요 기능
+* **CRUD 구현:** 수입/지출 항목 등록, 조회, 삭제 가능
+* **실시간 통계:** 총 수입, 총 지출, 잔액 자동 계산 및 UI 업데이트
+* **데이터 유지:** `localStorage`를 사용하여 브라우저 새로고침 후에도 기록 유지
+* **반응형 UI:** PC와 모바일 화면 모두에 최적화된 레이아웃 제공
+* **시각적 구분:** 수입(+)과 지출(-) 항목을 색상과 기호로 즉각적으로 구분
 
-## Expanding the ESLint configuration
+## 4. 컴포넌트 구조
+* **App**: 최상위 컴포넌트로 데이터 상태 관리 및 로직 처리
+* **Header**: 서비스 제목 표시
+* **TotalBalance**: 수입/지출/잔액 합계 대시보드
+* **ExpenseForm**: 지출 내역 입력 폼
+* **ExpenseList**: 전체 내역 리스트 출력
+* **ExpenseItem**: 개별 내역 렌더링 및 삭제 기능
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 5. 구현 과정에서의 주요 고민 및 해결
+1. **데이터 상태 관리:** `App.js`에서 상태를 관리하고 `props`를 통해 데이터를 전달하여 컴포넌트 간 데이터 흐름을 명확히 했습니다.
+2. **반응형 디자인:** 미디어 쿼리(`@media`)를 사용하여 PC와 모바일 환경에서 최적화된 레이아웃을 구현했습니다.
+3. **데이터 보존:** `useEffect`와 `localStorage`를 연동하여 새로고침 시에도 데이터가 유지되도록 했습니다.
+
+## 6. 테스트 결과
+| 기능 | 테스트 항목 | 결과 |
+| :--- | :--- | :--- |
+| **추가** | 내역 등록 정상 작동 | 성공 |
+| **삭제** | 내역 제거 정상 작동 | 성공 |
+| **저장** | 새로고침 후 데이터 유지 | 성공 |
+| **반응형** | 모바일 레이아웃 최적화 | 성공 |
+
+## 7. 실행 방법
+```bash
+# 1. 의존성 설치
+npm install
+
+# 2. 로컬 서버 실행
+npm run dev
