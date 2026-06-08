@@ -1,0 +1,68 @@
+.app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    text-align: center;
+}
+
+.total-balance {
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.form-and-list {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form input, form select {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.expense {
+    background-color: #ffcccc; /* Red for expenses */
+}
+
+.income {
+    background-color: #cce5ff; /* Blue for income */
+}
+
+button {
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .form-and-list {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    form {
+        width: 40%;
+    }
+
+    ul {
+        width: 55%;
+    }
+}
