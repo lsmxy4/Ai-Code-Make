@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ExpenseItem = ({ expense, updateExpense, deleteExpense }) => {
+const ExpenseItem = ({ expense, deleteExpense }) => {
     const handleDelete = () => {
         deleteExpense(expense.id);
     };
@@ -8,7 +8,7 @@ const ExpenseItem = ({ expense, updateExpense, deleteExpense }) => {
     return (
         <li className={expense.type === '지출' ? 'expense-item expense' : 'expense-item income'}>
             <span>{expense.title}</span>
-            <span>{expense.amount}</span>
+            <span>{expense.amount.toLocaleString()}원</span>
             <span>{expense.date}</span>
             <span>{expense.category}</span>
             <button onClick={handleDelete}>삭제</button>

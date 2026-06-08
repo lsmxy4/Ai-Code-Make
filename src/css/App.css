@@ -1,68 +1,346 @@
 .app {
-    max-width: 800px;
+    width: min(1120px, 100%);
     margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+    padding: 40px 24px 56px;
+    font-family: var(--sans);
+    color: #172033;
+    box-sizing: border-box;
 }
 
 .header {
-    text-align: center;
+    margin: 0 0 28px;
+    text-align: left;
+    font-size: clamp(2rem, 5vw, 3.9rem);
+    line-height: 1.05;
+    letter-spacing: -0.06em;
+    color: #0f172a;
+}
+
+.header::after {
+    content: '소비 기록부터 통계 확인까지 한눈에 관리하세요';
+    display: block;
+    max-width: 520px;
+    margin-top: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: #64748b;
 }
 
 .total-balance {
-    background-color: #f0f8ff;
-    padding: 15px;
-    border-radius: 5px;
-    text-align: center;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 12% 15%, rgba(59, 130, 246, 0.22), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #eef6ff 48%, #fff5f5 100%);
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+}
+
+.total-balance::before {
+    content: '';
+    position: absolute;
+    inset: auto -70px -95px auto;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.total-balance h2,
+.total-balance h3 {
+    position: relative;
+    margin: 0;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.total-balance h2 {
+    color: #0f172a;
+    font-size: clamp(1.55rem, 3.3vw, 2.35rem);
+    font-weight: 800;
+}
+
+.total-balance h2::before,
+.total-balance h3::before {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+}
+
+.total-balance h2::before {
+    content: 'Balance';
+}
+
+.total-balance h3 {
+    font-size: 1.08rem;
+    font-weight: 800;
+}
+
+.total-balance h3:nth-of-type(1) {
+    color: #2563eb;
+}
+
+.total-balance h3:nth-of-type(1)::before {
+    content: 'Income';
+}
+
+.total-balance h3:nth-of-type(2) {
+    color: #ef4444;
+}
+
+.total-balance h3:nth-of-type(2)::before {
+    content: 'Expense';
 }
 
 .form-and-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+    gap: 24px;
+    align-items: start;
+}
+
+form,
+ul {
+    margin: 0;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
 }
 
 form {
+    position: sticky;
+    top: 24px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    gap: 14px;
+    padding: 22px;
 }
 
-form input, form select {
-    margin-bottom: 10px;
-    padding: 10px;
+form::before,
+ul::before {
+    display: block;
+    margin-bottom: 4px;
+    color: #0f172a;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
 }
 
-.expense-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
+form::before {
+    content: '새 내역 추가';
 }
 
-.expense {
-    background-color: #ffcccc; /* Red for expenses */
+ul::before {
+    content: '전체 내역';
+    padding: 22px 22px 0;
 }
 
-.income {
-    background-color: #cce5ff; /* Blue for income */
+form input,
+form select {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 16px;
+    border: 1px solid #dbe5f3;
+    border-radius: 16px;
+    outline: none;
+    background: #f8fbff;
+    color: #172033;
+    font: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-button {
+form input::placeholder {
+    color: #94a3b8;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
+}
+
+form button,
+.expense-item button {
+    border: 0;
+    border-radius: 15px;
+    font: inherit;
+    font-weight: 800;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
     cursor: pointer;
 }
 
-@media (min-width: 768px) {
+form button {
+    min-height: 52px;
+    margin-top: 4px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    box-shadow: 0 14px 28px rgba(37, 99, 235, 0.24);
+}
+
+form button:hover,
+.expense-item button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 420px;
+    padding: 0 18px 18px;
+    list-style: none;
+}
+
+.expense-item {
+    display: grid;
+    grid-template-columns: minmax(120px, 1.2fr) minmax(100px, 0.8fr) minmax(92px, 0.7fr) auto auto;
+    gap: 12px;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+.expense-item span:first-child {
+    color: #0f172a;
+    font-weight: 900;
+}
+
+.expense-item span:nth-child(2) {
+    font-weight: 900;
+    text-align: right;
+}
+
+.expense-item span:nth-child(3),
+.expense-item span:nth-child(4) {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.expense-item span:nth-child(4) {
+    justify-self: start;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.06);
+}
+
+.expense {
+    border-color: rgba(239, 68, 68, 0.18);
+    background: linear-gradient(135deg, #fff7f7, #fff1f2);
+}
+
+.expense span:nth-child(2)::before {
+    content: '- ';
+}
+
+.expense span:nth-child(2) {
+    color: #dc2626;
+}
+
+.income {
+    border-color: rgba(37, 99, 235, 0.18);
+    background: linear-gradient(135deg, #f5f9ff, #eff6ff);
+}
+
+.income span:nth-child(2)::before {
+    content: '+ ';
+}
+
+.income span:nth-child(2) {
+    color: #2563eb;
+}
+
+.expense-item button {
+    justify-self: end;
+    padding: 9px 12px;
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+@media (max-width: 860px) {
+    .app {
+        padding: 28px 16px 44px;
+    }
+
+    .header {
+        text-align: center;
+    }
+
+    .header::after {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .total-balance,
     .form-and-list {
-        flex-direction: row;
-        justify-content: space-between;
+        grid-template-columns: 1fr;
     }
 
     form {
-        width: 40%;
+        position: static;
+    }
+
+    .expense-item {
+        grid-template-columns: 1fr auto;
+    }
+
+    .expense-item span:nth-child(2) {
+        text-align: right;
+    }
+
+    .expense-item span:nth-child(3),
+    .expense-item span:nth-child(4) {
+        justify-self: start;
+    }
+
+    .expense-item button {
+        grid-column: 2;
+        grid-row: 2 / span 2;
+        align-self: end;
+    }
+}
+
+@media (max-width: 560px) {
+    .total-balance h2,
+    .total-balance h3,
+    form,
+    ul {
+        border-radius: 20px;
+    }
+
+    .total-balance {
+        padding: 14px;
+        border-radius: 24px;
+    }
+
+    ul::before {
+        padding: 18px 18px 0;
     }
 
     ul {
-        width: 55%;
+        padding: 0 12px 12px;
     }
 }

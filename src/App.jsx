@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './Header';
 import ExpenseForm from './ExpenseForm';
 import ExpenseList from './ExpenseList';
 import TotalBalance from './TotalBalance';
 import './css/App.css';
 
-const App = () => {
-    const [expenses, setExpenses] = useState([]);
+const getSavedExpenses = () => {
+    try {
+        return JSON.parse(localStorage.getItem('expenses')) || [];
+    } catch {
+        return [];
+    }
+};
 
-    useEffect(() => {
-        const savedExpenses = JSON.parse(localStorage.getItem('expenses')) || [];
-        setExpenses(savedExpenses);
-    }, []);
+const App = () => {
+    const [expenses, setExpenses] = useState(getSavedExpenses);
 
     useEffect(() => {
         localStorage.setItem('expenses', JSON.stringify(expenses));
