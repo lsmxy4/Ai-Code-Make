@@ -128,6 +128,7 @@ form {
     position: sticky;
     top: 24px;
     display: flex;
+
     flex-direction: column;
     gap: 14px;
     padding: 22px;
@@ -153,7 +154,9 @@ ul::before {
 }
 
 form input,
-form select {
+form select,
+.expense-edit-form input,
+.expense-edit-form select {
     width: 100%;
     min-height: 50px;
     padding: 0 16px;
@@ -167,12 +170,15 @@ form select {
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-form input::placeholder {
+form input::placeholder,
+.expense-edit-form input::placeholder {
     color: #94a3b8;
 }
 
 form input:focus,
-form select:focus {
+form select:focus,
+.expense-edit-form input:focus,
+.expense-edit-form select:focus {
     border-color: #3b82f6;
     background: #ffffff;
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
@@ -213,7 +219,7 @@ ul {
 
 .expense-item {
     display: grid;
-    grid-template-columns: minmax(120px, 1.2fr) minmax(100px, 0.8fr) minmax(92px, 0.7fr) auto auto;
+    grid-template-columns: minmax(120px, 1.2fr) minmax(100px, 0.8fr) minmax(92px, 0.7fr) auto minmax(118px, auto);
     gap: 12px;
     align-items: center;
     padding: 16px;
@@ -240,14 +246,7 @@ ul {
     font-weight: 700;
 }
 
-.expense-item span:nth-child(4) {
-    justify-self: start;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: rgba(15, 23, 42, 0.06);
-}
-
-.expense {
+ul {
     border-color: rgba(239, 68, 68, 0.18);
     background: linear-gradient(135deg, #fff7f7, #fff1f2);
 }
@@ -273,11 +272,54 @@ ul {
     color: #2563eb;
 }
 
+.expense-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
 .expense-item button {
     justify-self: end;
     padding: 9px 12px;
+}
+
+.expense-item .edit-button,
+.expense-item .save-button {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.expense-item .delete-button,
+.expense-item .cancel-button {
     color: #ef4444;
     background: rgba(239, 68, 68, 0.1);
+}
+
+.expense-item.editing {
+    display: block;
+}
+
+.expense-edit-form {
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(120px, 1.2fr) minmax(100px, 0.8fr) minmax(130px, 0.9fr) minmax(92px, 0.7fr) minmax(92px, 0.7fr) minmax(118px, auto);
+    gap: 12px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.expense-edit-form::before {
+    display: none;
+}
+
+.expense-edit-form input,
+.expense-edit-form select {
+    min-height: 42px;
+    padding: 0 12px;
+    border-radius: 12px;
 }
 
 @media (max-width: 860px) {
@@ -316,14 +358,24 @@ ul {
         justify-self: start;
     }
 
-    .expense-item button {
+    .expense-actions {
         grid-column: 2;
         grid-row: 2 / span 2;
         align-self: end;
     }
+
+    .expense-edit-form {
+        grid-template-columns: 1fr;
+    }
+
+    .expense-edit-form .expense-actions {
+        grid-column: auto;
+        grid-row: auto;
+    }
 }
 
 @media (max-width: 560px) {
+
     .total-balance h2,
     .total-balance h3,
     form,
