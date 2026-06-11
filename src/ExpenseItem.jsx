@@ -74,7 +74,7 @@ const ExpenseItem = ({ expense, updateExpense, deleteExpense }) => {
                         onChange={handleChange}
                         placeholder="금액"
                         min="0"
-                        step="1"
+                        step="100"
                         required
                     />
                     <input

@@ -1,5 +1,5 @@
 .app {
-    width: min(1120px, 100%);
+    width: min(1360px, 100%);
     margin: 0 auto;
     padding: 40px 24px 56px;
     font-family: var(--sans);
@@ -110,7 +110,7 @@
 
 .form-and-list {
     display: grid;
-    grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+    grid-template-columns: minmax(300px, 0.7fr) minmax(0, 1.5fr);
     gap: 24px;
     align-items: start;
 }
@@ -296,19 +296,17 @@ ul {
 }
 
 .expense-item.editing {
-    display: block;
+    display: grid; 
+    grid-template-columns: 1fr; 
 }
 
 .expense-edit-form {
-    position: static;
     display: grid;
-    grid-template-columns: minmax(120px, 1.2fr) minmax(100px, 0.8fr) minmax(130px, 0.9fr) minmax(92px, 0.7fr) minmax(92px, 0.7fr) minmax(118px, auto);
-    gap: 12px;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
+    grid-template-columns: 1.2fr 0.8fr 0.7fr auto auto auto; 
+    gap: 8px;
+    align-items: center;
+    width: 100%; 
+    box-sizing: border-box;
 }
 
 .expense-edit-form::before {
