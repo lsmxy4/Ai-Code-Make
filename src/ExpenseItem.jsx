@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CATEGORY_OPTIONS = ['식비', '교통', '쇼핑', '문화'];
+const CATEGORY_OPTIONS = ['식비', '교통', '쇼핑', '문화','일급','주급','월급'];
 const TYPE_OPTIONS = ['지출', '수입'];
 
 const ExpenseItem = ({ expense, updateExpense, deleteExpense }) => {

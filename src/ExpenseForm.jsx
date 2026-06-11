@@ -28,6 +28,9 @@ const ExpenseForm = ({ addExpense }) => {
                 <option value="교통">교통</option>
                 <option value="쇼핑">쇼핑</option>
                 <option value="문화">문화</option>
+                <option value="문화">일급</option>
+                <option value="문화">주급</option>
+                <option value="문화">월급</option>
             </select>
             <select value={type} onChange={(e) => setType(e.target.value)}>
                 <option value="지출">지출</option>
