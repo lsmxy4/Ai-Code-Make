@@ -21,7 +21,7 @@ const ExpenseForm = ({ addExpense }) => {
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="항목명" required />
-            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="금액" required />
+            <input type="number" min="0" step="100" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="금액" required />
             <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
             <select value={category} onChange={(e) => setCategory(e.target.value)}>
                 <option value="식비">식비</option>
